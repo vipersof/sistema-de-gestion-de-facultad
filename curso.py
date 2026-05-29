@@ -4,9 +4,7 @@ class Curso:
         self.__codigo = codigo
         self.__profesor = profesor
         self.__capacidad_maxima = capacidad_maxima
-        self.__estudiantes_inscriptos = []   # lista de estudiantes inscriptos
-
-    # --- Getters ---
+        self.__estudiantes_inscriptos = []   
     def getNombre(self):
         return self.__nombre
 
@@ -32,7 +30,7 @@ class Curso:
     def darBajaEstudiante(self, estudiante):
         self.__estudiantes_inscriptos.remove(estudiante)
 
-    # --- Representación legible ---
+
     def __str__(self):
         return (f"Curso: {self.__nombre} "
                 f"| Código: {self.__codigo} "
