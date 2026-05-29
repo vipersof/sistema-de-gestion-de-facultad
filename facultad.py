@@ -2,7 +2,6 @@ from estudiante import Estudiante
 from curso import Curso
 
 
-# --- Excepciones personalizadas ---
 class EstudianteNoEncontradoError(Exception):
     pass
 
@@ -95,10 +94,7 @@ class Facultad:
     #  INSCRIPCIÓN                                                         #
     # ------------------------------------------------------------------ #
     def inscribirEstudiante(self, matricula, codigo_curso):
-        """
-        Inscribe un estudiante a un curso.
-        Lanza excepciones si no hay cupos o el estudiante ya está inscripto.
-        """
+
         try:
             estudiante = self.buscarEstudiante(matricula)
             curso = self.buscarCurso(codigo_curso)
@@ -109,13 +105,13 @@ class Facultad:
                     f"{estudiante.getNombre()} ya está inscripto en '{curso.getNombre()}'."
                 )
 
-            # Verificar cupos
+           
             if curso.getCuposDisponibles() == 0:
                 raise SinCuposDisponiblesError(
                     f"El curso '{curso.getNombre()}' no tiene cupos disponibles."
                 )
 
-            # Inscribir en ambos lados
+            
             curso.inscribirEstudiante(estudiante)
             estudiante.inscribirCurso(curso)
 
@@ -135,10 +131,7 @@ class Facultad:
     #  BAJA DE CURSO                                                       #
     # ------------------------------------------------------------------ #
     def darBajaCurso(self, matricula, codigo_curso):
-        """
-        Da de baja a un estudiante de un curso.
-        Lanza excepción si el estudiante no estaba inscripto en ese curso.
-        """
+        
         try:
             estudiante = self.buscarEstudiante(matricula)
             curso = self.buscarCurso(codigo_curso)
@@ -165,7 +158,7 @@ class Facultad:
     #  CONSULTAS DE ESTADO                                                 #
     # ------------------------------------------------------------------ #
     def consultarEstadoCursos(self):
-        """Muestra el estado de todos los cursos con cupos e inscriptos."""
+       
         if not self.__cursos:
             print("No hay cursos registrados.")
             return
@@ -180,7 +173,7 @@ class Facultad:
         print("============================\n")
 
     def consultarEstadoEstudiantes(self):
-        """Muestra todos los estudiantes y los cursos en los que están inscriptos."""
+       
         if not self.__estudiantes:
             print("No hay estudiantes registrados.")
             return
